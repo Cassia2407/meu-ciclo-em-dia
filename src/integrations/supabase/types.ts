@@ -14,13 +14,204 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      educational_content: {
+        Row: {
+          age_groups: string[]
+          body: string
+          category: string
+          created_at: string
+          id: string
+          slug: string
+          sort_order: number
+          sources: string
+          summary: string
+          title: string
+        }
+        Insert: {
+          age_groups?: string[]
+          body: string
+          category: string
+          created_at?: string
+          id?: string
+          slug: string
+          sort_order?: number
+          sources?: string
+          summary: string
+          title: string
+        }
+        Update: {
+          age_groups?: string[]
+          body?: string
+          category?: string
+          created_at?: string
+          id?: string
+          slug?: string
+          sort_order?: number
+          sources?: string
+          summary?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      menstrual_records: {
+        Row: {
+          created_at: string
+          flow: string | null
+          id: string
+          record_date: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          flow?: string | null
+          id?: string
+          record_date: string
+          updated_at?: string
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          flow?: string | null
+          id?: string
+          record_date?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          birth_date: string
+          created_at: string
+          full_name: string
+          id: string
+          show_fertile_window: boolean
+          terms_accepted_at: string
+          typical_cycle_length: number | null
+          typical_period_length: number | null
+          updated_at: string
+        }
+        Insert: {
+          birth_date: string
+          created_at?: string
+          full_name: string
+          id: string
+          show_fertile_window?: boolean
+          terms_accepted_at?: string
+          typical_cycle_length?: number | null
+          typical_period_length?: number | null
+          updated_at?: string
+        }
+        Update: {
+          birth_date?: string
+          created_at?: string
+          full_name?: string
+          id?: string
+          show_fertile_window?: boolean
+          terms_accepted_at?: string
+          typical_cycle_length?: number | null
+          typical_period_length?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      sexual_activity_records: {
+        Row: {
+          created_at: string
+          id: string
+          notes: string | null
+          record_date: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          record_date: string
+          updated_at?: string
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          record_date?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      support_messages: {
+        Row: {
+          created_at: string
+          id: string
+          message: string
+          subject: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message: string
+          subject: string
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string
+          subject?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      symptom_records: {
+        Row: {
+          bloating: string | null
+          cramps: string | null
+          created_at: string
+          id: string
+          notes: string | null
+          other_symptom: string | null
+          record_date: string
+          symptoms: string[]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          bloating?: string | null
+          cramps?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          other_symptom?: string | null
+          record_date: string
+          symptoms?: string[]
+          updated_at?: string
+          user_id?: string
+        }
+        Update: {
+          bloating?: string | null
+          cramps?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          other_symptom?: string | null
+          record_date?: string
+          symptoms?: string[]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      current_user_is_adult: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
