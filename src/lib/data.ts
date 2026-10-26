@@ -189,10 +189,11 @@ export function useAddPeriodRange() {
   const invalidate = useInvalidateRecords();
   return useMutation({
     mutationFn: async (input: { start: string; end: string; flow: string | null }) => {
+      // Omit flow when not chosen so existing per-day flow values are kept.
       const rows = daysBetween(input.start, input.end).map((d) => ({
         user_id: user.id,
         record_date: d,
-        flow: input.flow,
+        ...(input.flow ? { flow: input.flow } : {}),
       }));
       const { error } = await supabase
         .from("menstrual_records")
