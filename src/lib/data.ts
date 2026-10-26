@@ -208,7 +208,7 @@ export function useDeleteDay(adult: boolean) {
   const invalidate = useInvalidateRecords();
   return useMutation({
     mutationFn: async (date: string) => {
-      const ops = [
+      const ops: PromiseLike<{ error: unknown }>[] = [
         supabase.from("menstrual_records").delete().eq("record_date", date),
         supabase.from("symptom_records").delete().eq("record_date", date),
       ];
