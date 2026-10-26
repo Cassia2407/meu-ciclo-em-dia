@@ -5,20 +5,14 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Cíclica design system. All colors in oklch.
+ * Palette: rosa-claro #F8DDE5, rosa pastel #F2C6D4, rosa médio #D98FA8,
+ * lilás #E9E1F5, creme #FFF9F5, branco, texto #493943.
  */
 
 @theme inline {
+  --font-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -46,6 +40,22 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+
+  --color-rose-light: var(--rose-light);
+  --color-rose-pastel: var(--rose-pastel);
+  --color-rose-medium: var(--rose-medium);
+  --color-rose-deep: var(--rose-deep);
+  --color-lilac: var(--lilac);
+  --color-lilac-deep: var(--lilac-deep);
+  --color-cream: var(--cream);
+
+  --color-period: var(--period);
+  --color-period-foreground: var(--period-foreground);
+  --color-fertile: var(--fertile);
+  --color-fertile-foreground: var(--fertile-foreground);
+  --color-ovulation: var(--ovulation);
+  --color-ovulation-foreground: var(--ovulation-foreground);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -59,77 +69,63 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-soft: 0 1px 2px oklch(0.366 0.028 340.7 / 0.04), 0 8px 24px -12px oklch(0.542 0.117 358.7 / 0.18);
+  --shadow-lift: 0 2px 4px oklch(0.366 0.028 340.7 / 0.05), 0 18px 40px -18px oklch(0.542 0.117 358.7 / 0.3);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
+  --radius: 1rem;
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --cream: oklch(0.986 0.008 56.3);
+  --rose-light: oklch(0.922 0.031 357.9);
+  --rose-pastel: oklch(0.869 0.053 357.2);
+  --rose-medium: oklch(0.732 0.095 357.8);
+  --rose-deep: oklch(0.542 0.117 358.7);
+  --lilac: oklch(0.922 0.028 303.9);
+  --lilac-deep: oklch(0.535 0.118 301.6);
+  --ink: oklch(0.366 0.028 340.7);
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--rose-deep);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--rose-light);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.955 0.014 357);
+  --muted-foreground: oklch(0.48 0.03 345);
+  --accent: var(--lilac);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.55 0.19 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.025 355);
+  --input: oklch(0.88 0.03 355);
+  --ring: var(--rose-medium);
+
+  --period: var(--rose-medium);
+  --period-foreground: oklch(0.25 0.04 350);
+  --fertile: var(--lilac);
+  --fertile-foreground: var(--ink);
+  --ovulation: var(--lilac-deep);
+  --ovulation-foreground: oklch(1 0 0);
+
+  --chart-1: var(--rose-deep);
+  --chart-2: var(--lilac-deep);
+  --chart-3: var(--rose-medium);
+  --chart-4: var(--rose-pastel);
+  --chart-5: var(--lilac);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--rose-deep);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: var(--rose-light);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--rose-medium);
 }
 
 @layer base {
@@ -137,8 +133,20 @@
     border-color: var(--color-border);
   }
 
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
   }
 }
