@@ -165,6 +165,7 @@ function SignIn({ onForgot, redirectTo }: { onForgot: () => void; redirectTo: ()
 }
 
 function SignUp() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", birth: "", email: "", password: "", confirm: "" });
   const [accepted, setAccepted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -194,7 +195,7 @@ function SignUp() {
     if (Object.keys(errs).length) return;
 
     setLoading(true);
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: em.data!,
       password: form.password,
       options: {
@@ -205,6 +206,11 @@ function SignUp() {
     setLoading(false);
     if (error) {
       setErrors({ form: friendlyError(error, "Não foi possível criar a conta. Tente novamente.") });
+      return;
+    }
+    if (data.session) {
+      toast.success("Conta criada! Bem-vinda ao Cíclica.");
+      navigate({ to: "/inicio", replace: true });
       return;
     }
     setSentTo(em.data!);
