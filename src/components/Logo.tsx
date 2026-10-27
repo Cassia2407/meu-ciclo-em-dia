@@ -19,7 +19,7 @@ export function Logo({ className }: { className?: string }) {
     <img
       src={logoAsset.url}
       alt="Cíclica"
-      className={cn("h-14 w-auto mix-blend-multiply", className)}
+      className={cn("h-16 w-auto mix-blend-multiply", className)}
     />
   );
 }
